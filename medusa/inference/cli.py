@@ -42,9 +42,15 @@ def main(args):
             load_in_8bit=args.load_in_8bit,
             load_in_4bit=args.load_in_4bit,
         )
-        tokenizer = model.get_tokenizer()
-        conv = None
 
+        tokenizer = model.get_tokenizer()
+        # save model and tokenizer
+        print("saving model and tokenizer...")
+        model.save_pretrained("/home/liulingfeng/zhangtianle/ztl/model/Medusa")
+        tokenizer.save_pretrained("/home/liulingfeng/zhangtianle/ztl/model/Medusa")
+        conv = None
+        # print model's deicve
+        print("Model's device:", model.base_model.device)
         def new_chat():
             return get_conversation_template(args.model)
 
